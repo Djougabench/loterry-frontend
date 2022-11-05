@@ -3,7 +3,7 @@ import { useMoralis, useWeb3Contract } from "react-moralis"
 import { abi, contractAddresses } from "../constants"
 import { ethers } from "ethers"
 import { useNotification } from "web3uikit"
-import { Text, Button,Box } from "@chakra-ui/react"
+import { Text, Button, Box } from "@chakra-ui/react"
 
 export default function LotteryEntrance() {
     const { chainId: chainIdHex, isWeb3Enabled } = useMoralis()
@@ -80,7 +80,6 @@ export default function LotteryEntrance() {
 
     return (
         <Box>
-         
             {raffleAddress ? (
                 <>
                     {isLoading || isFetching ? (
@@ -96,7 +95,7 @@ export default function LotteryEntrance() {
                     ) : (
                         <Button
                             colorScheme="blue"
-                            onClick={async () =>
+                            onClick={async () => 
                                 await enterRaffle({
                                     onSuccess: handleSuccess,
                                     onError: (error) => console.log(error),
@@ -109,9 +108,12 @@ export default function LotteryEntrance() {
                     )}
 
                     <Box>
-                       <Box> EntranceFee :{ethers.utils.formatUnits(entranceFee, "ether")} ETH</Box> 
-                       <Box>Number of players :{numPLayers}</Box>
-                       <Box>Recent Winner:{recentWinner}</Box>
+                        <Box>
+                            {" "}
+                            EntranceFee :{ethers.utils.formatUnits(entranceFee, "ether")} ETH
+                        </Box>
+                        <Box>Number of players :{numPLayers}</Box>
+                        <Box>Recent Winner:{recentWinner}</Box>
                     </Box>
                 </>
             ) : (
